@@ -1,4 +1,4 @@
-﻿namespace adventofcode2022;
+﻿namespace adventofcode2022.day1;
 
 
 class Elf
@@ -8,14 +8,13 @@ class Elf
 }
 
 
-class Day1Program
+class Program
 {
-
 
     public static void Run()
     {
         List<Elf> elfs = GetElfs();
-        
+
         // Part 1
         long mostCalories = elfs.Max(x => x.TotalCalories);
         Console.WriteLine($"Elf with most calories carries: {mostCalories} calories");
@@ -24,12 +23,12 @@ class Day1Program
         List<Elf> orderedListOfElfs = elfs.OrderByDescending(x => x.TotalCalories).ToList();
         long top3Combined = orderedListOfElfs[0].TotalCalories + orderedListOfElfs[1].TotalCalories + orderedListOfElfs[2].TotalCalories;
         Console.WriteLine($"The three Elfs which carries the most calories, carries combined: {top3Combined} calories");
-        
+
     }
 
     private static List<Elf> GetElfs()
     {
-        string inputFile = "day1/input-day1.txt";
+        string inputFile = "day1/input";
         string[] lines = File.ReadAllLines(inputFile);
         List<Elf> elfs = new List<Elf>();
         Elf currentElf = new Elf();

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace adventofcode2022.day2;
+﻿namespace adventofcode2022.day2;
 
 
-
-class Day2Program
+class Program
 {
     private class Game
     {
@@ -76,7 +69,7 @@ class Day2Program
 
     private static List<Game> LoadStratigyGuidePart1()
     {
-        string inputFile = "day2/input-day2.txt";
+        string inputFile = "day2/input";
         string[] lines = File.ReadAllLines(inputFile);
         List<Game> games = new List<Game>();
         for (int i = 0; i < lines.Length; i++)
@@ -103,7 +96,7 @@ class Day2Program
     }
     private static List<Game> LoadStratigyGuidePart2()
     {
-        string inputFile = "day2/input-day2.txt";
+        string inputFile = "day2/input";
         string[] lines = File.ReadAllLines(inputFile);
         List<Game> games = new List<Game>();
         for (int i = 0; i < lines.Length; i++)

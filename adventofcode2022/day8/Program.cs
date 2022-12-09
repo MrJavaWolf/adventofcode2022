@@ -1,6 +1,6 @@
 ﻿namespace adventofcode2022.day8;
 
-internal class Program_day8
+internal class Program
 {
 
     class TreeGrid

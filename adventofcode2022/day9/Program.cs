@@ -2,7 +2,7 @@
 
 namespace adventofcode2022.day9;
 
-internal class Program_day9
+internal class Program
 {
     enum Direction
     {
