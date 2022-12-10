@@ -110,6 +110,8 @@ internal class Program
 
     public static void Run()
     {
+        Console.WriteLine();
+        Console.WriteLine("- - - - - Day 8 - - - - -");
 
         TreeGrid trees = Load();
         int numberOfTreesVisible = 0;

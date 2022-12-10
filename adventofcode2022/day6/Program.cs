@@ -10,20 +10,23 @@ internal class Program
 
     public static void Run()
     {
+        Console.WriteLine();
+        Console.WriteLine("- - - - - Day 6 - - - - -");
+
         string message = Load();
-        Console.WriteLine($"example1: {FindStartMarker(example1, 4)}, expected: 7");
-        Console.WriteLine($"example2: {FindStartMarker(example2, 4)}, expected: 5");
-        Console.WriteLine($"example3: {FindStartMarker(example3, 4)}, expected: 6");
-        Console.WriteLine($"example4: {FindStartMarker(example4, 4)}, expected: 10");
-        Console.WriteLine($"example5: {FindStartMarker(example5, 4)}, expected: 11");
+        //Console.WriteLine($"example1: {FindStartMarker(example1, 4)}, expected: 7");
+        //Console.WriteLine($"example2: {FindStartMarker(example2, 4)}, expected: 5");
+        //Console.WriteLine($"example3: {FindStartMarker(example3, 4)}, expected: 6");
+        //Console.WriteLine($"example4: {FindStartMarker(example4, 4)}, expected: 10");
+        //Console.WriteLine($"example5: {FindStartMarker(example5, 4)}, expected: 11");
         Console.WriteLine($"Part 1: {FindStartMarker(message, 4)}");
 
-        Console.WriteLine($"example1: {FindStartMarker(example1, 14)}, expected: 19");
-        Console.WriteLine($"example2: {FindStartMarker(example2, 14)}, expected: 23");
-        Console.WriteLine($"example3: {FindStartMarker(example3, 14)}, expected: 23");
-        Console.WriteLine($"example4: {FindStartMarker(example4, 14)}, expected: 29");
-        Console.WriteLine($"example5: {FindStartMarker(example5, 14)}, expected: 26");
-        Console.WriteLine($"Part 1: {FindStartMarker(message, 14)}");
+        //Console.WriteLine($"example1: {FindStartMarker(example1, 14)}, expected: 19");
+        //Console.WriteLine($"example2: {FindStartMarker(example2, 14)}, expected: 23");
+        //Console.WriteLine($"example3: {FindStartMarker(example3, 14)}, expected: 23");
+        //Console.WriteLine($"example4: {FindStartMarker(example4, 14)}, expected: 29");
+        //Console.WriteLine($"example5: {FindStartMarker(example5, 14)}, expected: 26");
+        Console.WriteLine($"Part 2: {FindStartMarker(message, 14)}");
     }
 
     static int FindStartMarker(string message, int uniqueCharacters)

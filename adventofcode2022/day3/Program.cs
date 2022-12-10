@@ -23,6 +23,9 @@ class Program
 
     public static void Run()
     {
+        Console.WriteLine();
+        Console.WriteLine("- - - - - Day 3 - - - - -");
+
         List<Backpack> backpacks = LoadInput();
         Console.WriteLine($"total number of backpacks: {backpacks.Count}");
         Console.WriteLine($"Part 1: {backpacks.Sum(x => getErrorPriority(x.getErrorItem()))}");

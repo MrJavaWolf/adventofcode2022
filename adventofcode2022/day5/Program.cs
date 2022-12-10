@@ -74,6 +74,10 @@ class Program
 
     public static void Run()
     {
+
+        Console.WriteLine();
+        Console.WriteLine("- - - - - Day 5 - - - - -");
+
         (Ship ship, List<CraneInstruction> instructions) = Load();
         ship.ExecuteCrateMover9000(instructions);
         string topOfTheStacks = ship.GetTopOfTheStacks();

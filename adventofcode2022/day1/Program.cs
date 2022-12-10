@@ -13,16 +13,18 @@ class Program
 
     public static void Run()
     {
+        Console.WriteLine();
+        Console.WriteLine("- - - - - Day 1 - - - - -");
         List<Elf> elfs = GetElfs();
 
         // Part 1
         long mostCalories = elfs.Max(x => x.TotalCalories);
-        Console.WriteLine($"Elf with most calories carries: {mostCalories} calories");
+        Console.WriteLine($"Elf with most calories carries (Part 1): {mostCalories} calories");
 
         // Part 2
         List<Elf> orderedListOfElfs = elfs.OrderByDescending(x => x.TotalCalories).ToList();
         long top3Combined = orderedListOfElfs[0].TotalCalories + orderedListOfElfs[1].TotalCalories + orderedListOfElfs[2].TotalCalories;
-        Console.WriteLine($"The three Elfs which carries the most calories, carries combined: {top3Combined} calories");
+        Console.WriteLine($"The three Elfs which carries the most calories, carries combined (Part 2): {top3Combined} calories");
 
     }
 

@@ -57,13 +57,15 @@ class Program
 
     public static void Run()
     {
-        List<Game> games = LoadStratigyGuidePart2();
-        for(int i = 0; i < games.Count; i++)
-        {
-            int finalScore = games[i].GetFinalGameScore();
-        }
-        int totalScore = games.Sum(x => x.GetFinalGameScore());
-        Console.WriteLine($"Total score from game plan: {totalScore}");
+        Console.WriteLine();
+        Console.WriteLine("- - - - - Day 2 - - - - -");
+
+        List<Game> gamesPart1 = LoadStratigyGuidePart1();
+        int totalScorePart1 = gamesPart1.Sum(x => x.GetFinalGameScore());
+        Console.WriteLine($"Part 1: {totalScorePart1}");
+        List<Game> gamesPart2 = LoadStratigyGuidePart2();
+        int totalScorePart2 = gamesPart2.Sum(x => x.GetFinalGameScore());
+        Console.WriteLine($"Part 2: {totalScorePart2}");
     }
 
     private static List<Game> LoadStratigyGuidePart1()

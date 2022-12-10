@@ -195,6 +195,8 @@ internal class Program
 
     public static void Run()
     {
+        Console.WriteLine();
+        Console.WriteLine("- - - - - Day 9 - - - - -");
 
         List<Movement> movements = Load();
         RobeSimulation simulation = new RobeSimulation();

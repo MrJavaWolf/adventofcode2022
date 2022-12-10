@@ -42,6 +42,9 @@ class Program
 
     public static void Run()
     {
+        Console.WriteLine();
+        Console.WriteLine("- - - - - Day 4 - - - - -");
+
         List<ElfGroup> ElfGroups = LoadInput();
         Console.WriteLine($"Number of elf groups: {ElfGroups.Count}");
         int count = 0;

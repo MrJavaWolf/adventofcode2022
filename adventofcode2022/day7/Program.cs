@@ -59,6 +59,9 @@ internal class Program
 
     public static void Run()
     {
+        Console.WriteLine();
+        Console.WriteLine("- - - - - Day 7 - - - - -");
+
         ElveFolder root = Load();
         List<ElveFolder> smallElveFolders = new List<ElveFolder>();
         root.AddIfAtMost100000(smallElveFolders);
