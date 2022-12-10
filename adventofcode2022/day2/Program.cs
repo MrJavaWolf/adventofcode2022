@@ -1,6 +1,5 @@
 ﻿namespace adventofcode2022.day2;
 
-
 class Program
 {
     private class Game
