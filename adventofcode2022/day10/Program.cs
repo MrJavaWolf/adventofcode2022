@@ -87,6 +87,10 @@ public class Program
 
     public static void Run()
     {
+
+        Console.WriteLine();
+        Console.WriteLine("- - - - - Day 10 - - - - -");
+
         List<Instruction> instructions = Load();
         CrtSimulator crt = new CrtSimulator();
         CpuSimulator cpu = new(instructions);
