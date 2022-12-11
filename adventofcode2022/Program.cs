@@ -8,3 +8,4 @@ adventofcode2022.day7.Program.Run();
 adventofcode2022.day8.Program.Run();
 adventofcode2022.day9.Program.Run();
 adventofcode2022.day10.Program.Run();
+adventofcode2022.day11.Program.Run();
