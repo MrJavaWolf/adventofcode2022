@@ -2,6 +2,12 @@
 
 namespace adventofcode2022.day17;
 
+public class CycleDetected
+{
+    public int HeightChange { get; set; }
+    public int RockCycleLength { get; set; }
+}
+
 public class Chamber
 {
     private readonly WindDirection wind;
@@ -9,14 +15,14 @@ public class Chamber
     public int RocksPlaces = 0;
     public int CurrentTopOfStack = 0;
 
-    public Dictionary<int[,], HashSet<int>> CycleDetection = new Dictionary<int[,], HashSet<int>>();
+    public Dictionary<int[,], Dictionary<int, (int, int, int)>> CycleDetection = new();
 
     public Chamber(WindDirection wind)
     {
         this.wind = wind;
     }
 
-    public void AddRock(int[,] rock)
+    public CycleDetected? AddRock(int[,] rock)
     {
         //Console.WriteLine("New rock");
         int currentY = CurrentTopOfStack + 3;
@@ -63,15 +69,24 @@ public class Chamber
                 isRockPlaced = true;
 
                 if (!CycleDetection.ContainsKey(rock))
-                    CycleDetection.Add(rock, new HashSet<int>());
+                    CycleDetection.Add(rock, new Dictionary<int, (int, int, int)>());
 
-                if (!CycleDetection[rock].Contains(wind.CurrentPosition))
+                if (!CycleDetection[rock].ContainsKey(wind.CurrentPosition))
                 {
-                    CycleDetection[rock].Add(wind.CurrentPosition);
+                    CycleDetection[rock].Add(wind.CurrentPosition, (GetTopOfStack(CurrentTopOfStack), wind.TotalMovements, RocksPlaces));
                 }
                 else
                 {
+                    var thing = CycleDetection[rock][wind.CurrentPosition];
+                    CurrentTopOfStack = GetTopOfStack(CurrentTopOfStack);
                     // cycle detected
+                    CycleDetected cycleDetected = new()
+                    {
+                        HeightChange = CurrentTopOfStack - thing.Item1,
+                        RockCycleLength = RocksPlaces - thing.Item3,
+                    };
+                    CycleDetection[rock][wind.CurrentPosition] = (CurrentTopOfStack, wind.TotalMovements, RocksPlaces);
+                    return cycleDetected;
                 }
             }
             else
@@ -81,6 +96,7 @@ public class Chamber
         }
 
         CurrentTopOfStack = GetTopOfStack(CurrentTopOfStack);
+        return null;
     }
 
     public void Place(int[,] rock, int x, int y)
@@ -248,23 +264,27 @@ internal class Program
     private static void Part2(WindDirection wind, List<int[,]> rocks)
     {
         Chamber chamber = new Chamber(wind);
+        bool haveDetectedCycle = false;
+        long additionalHeight = 0;
         for (long i = 0; i < 1_000_000_000_000; i++)
         {
-            if (i % 100_000 == 0)
-            {
-                Console.WriteLine($"{i}");
-            }
-            chamber.AddRock(rocks[(int)(i % rocks.Count)]);
+            CycleDetected? cycle = chamber.AddRock(rocks[(int)(i % rocks.Count)]);
+            if (cycle == null || haveDetectedCycle || i <= 2022) continue;
+            haveDetectedCycle = true;
+            var numberOfSimulatedCycles = 1_000_000_000_000 / cycle.RockCycleLength - 100;
+            additionalHeight = cycle.HeightChange * numberOfSimulatedCycles;
+            i += numberOfSimulatedCycles * cycle.RockCycleLength;
         }
-        Console.WriteLine($"Part 2: {chamber.CurrentTopOfStack}");
+        Console.WriteLine($"Part 2: {(chamber.CurrentTopOfStack + additionalHeight)}");
     }
 
     public static void Run()
     {
-        WindDirection wind = new WindDirection(Load());
+        WindDirection wind1 = new WindDirection(Load());
+        WindDirection wind2 = new WindDirection(Load());
         List<int[,]> rocks = GetRocks();
-        Part1(wind, rocks);
-        Part2(wind, rocks);
+        Part1(wind1, rocks);
+        Part2(wind2, rocks);
     }
 
 
