@@ -13,4 +13,5 @@
 //adventofcode2022.day13.Program.Run();
 //adventofcode2022.day14.Program.Run();
 //adventofcode2022.day15.Program.Run();
-adventofcode2022.day16.Program.Run();
+//adventofcode2022.day16.Program.Run();
+adventofcode2022.day17.Program.Run();
