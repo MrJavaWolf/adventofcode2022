@@ -75,7 +75,7 @@ public class LavaCubes
         int count = 0;
         foreach (var cube in Cubes)
         {
-            Console.WriteLine($"cube: {count} / {Cubes.Count}");
+            //Console.WriteLine($"cube: {count} / {Cubes.Count}");
             count++;
 
             if (IsConnectedToTheOutside(new Position(cube.X + 1, cube.Y, cube.Z))) surfaceArea++;
